@@ -47,7 +47,7 @@ public class Gestionar_Jugadores {
             return;
         }
 
-        System.out.println("\n===== JUGADORES REGISTRADOS =====");
+        System.out.println("\n«««««««««««««««««««« JUGADORES RESGISTRADOS »»»»»»»»»»»»»»»»»»»»");
 
         for (int i = 0; i < cantidad_jugadores; i++) {
             System.out.println(jugadores[i]);
