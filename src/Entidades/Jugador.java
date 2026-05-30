@@ -42,9 +42,9 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return "ID: " + id_jugador +
-               " | Nombre: " + nombre_jugador +
-               " | Puntaje: " + puntaje_acumulado;
+        return "¤ ID: " + id_jugador +
+               " ║ Nombre: " + nombre_jugador +
+               " ║ Puntaje: " + puntaje_acumulado;
     }
 }
 
