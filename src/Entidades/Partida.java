@@ -96,9 +96,9 @@ public class Partida {
 
     @Override
     public String toString() {
-        return "Partida ID: " + id_partida +
-               " | Blancas: " + jugador_blancas.obtener_NombreJugador() +
-               " | Negras: " + jugador_negras.obtener_NombreJugador() +
-               " | Resultado: " + resultado;
+        return "¤ Partida ID: " + id_partida +
+               " ║ Blancas: " + jugador_blancas.obtener_NombreJugador() +
+               " ║ Negras: " + jugador_negras.obtener_NombreJugador() +
+               " ║ Resultado: " + resultado;
     }
 }
