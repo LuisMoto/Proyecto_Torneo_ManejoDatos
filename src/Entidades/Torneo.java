@@ -64,9 +64,9 @@ public class Torneo {
 
     @Override
     public String toString() {
-        return "ID: " + id_torneo +
-               " | Torneo: " + nombre_torneo +
-               " | Tipo: " + tipo +
-               " | Duración: " + duracion_minutos + " min";
+        return "¤ ID: " + id_torneo +
+               " ║ Torneo: " + nombre_torneo +
+               " ║ Tipo: " + tipo +
+               " ║ Duración: " + duracion_minutos + " min";
     }
 }
