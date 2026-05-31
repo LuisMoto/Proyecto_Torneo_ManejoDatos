@@ -29,7 +29,7 @@ public class Gestionar_Jugadores {
 
         if (cantidad_jugadores < jugadores.length) {
 
-            // Asignar ID autom automaticamente
+            // Asignar ID automaticamente
             jugador.setIdJugador(siguiente_id);
             siguiente_id++;
 
