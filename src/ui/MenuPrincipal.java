@@ -27,10 +27,11 @@ public class MenuPrincipal {
     // Método para mostrar el menú principal al usuario
     private static void mostrarMenu(){ 
         System.out.println("\n╔═══════════════════════════════════╗");
-        System.out.println("║      TORNEO DE AJEDREZ - MENU     ║");
+        System.out.println("║         TORNEO DE AJEDREZ         ║");
+        System.out.println("║             - MENU -              ║");
         System.out.println("╠═══════════════════════════════════╣");
         System.out.println("║  A - Registrar jugador            ║");
-        System.out.println("║  B - Cargar jugadores (Arreglo)   ║");
+        System.out.println("║  B - Cargar jugadores             ║");
         System.out.println("║  C - Buscar jugador por ID        ║");
         System.out.println("║  D - Gestionar duelos             ║");
         System.out.println("║  E - Historial de partidas        ║");
