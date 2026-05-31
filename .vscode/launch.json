@@ -1,28 +1,26 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
             "type": "java",
             "name": "MenuPrincipal",
             "request": "launch",
-            "mainClass": "UI.MenuPrincipal",
-            "projectName": "Proyecto_Torneo_ManejoDatos_30d868d7"
-        },
-        {
-            "type": "java",
-            "name": "MenuPrincipal",
-            "request": "launch",
-            "mainClass": "MenuPrincipal",
-            "projectName": "Proyecto_Torneo_ManejoDatos_30d868d7"
+            "mainClass": "ui.MenuPrincipal",
+            "projectName": "Proyecto_Torneo_ManejoDatos_30d868d7",
+            "classPaths": [
+                "${workspaceFolder}/lib/mysql-connector-j-9.7.0.jar",
+                "${workspaceFolder}/src"
+            ]
         },
         {
             "type": "java",
             "name": "Current File",
             "request": "launch",
-            "mainClass": "${file}"
+            "mainClass": "${file}",
+            "classPaths": [
+                "${workspaceFolder}/lib/mysql-connector-j-9.7.0.jar",
+                "${workspaceFolder}/src"
+            ]
         }
     ]
 }
