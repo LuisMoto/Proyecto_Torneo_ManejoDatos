@@ -22,43 +22,43 @@ public class Torneo {
         this.duracion_minutos = duracion_minutos;
     }
 
-    public int obtener_IdTorneo() {
+    public int getIdTorneo() {
         return id_torneo;
     }
 
-    public void modificar_IdTorneo(int id_torneo) {
+    public void setIdTorneo(int id_torneo) {
         this.id_torneo = id_torneo;
     }
 
-    public String obtener_NombreTorneo() {
+    public String getNombreTorneo() {
         return nombre_torneo;
     }
 
-    public void modificar_NombreTorneo(String nombre_torneo) {
+    public void setNombreTorneo(String nombre_torneo) {
         this.nombre_torneo = nombre_torneo;
     }
 
-    public String obtener_Tipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void modificar_Tipo(String tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
-    public Date obtener_FechaInicio() {
+    public Date getFechaInicio() {
         return fecha_inicio;
     }
 
-    public void modificar_FechaInicio(Date fecha_inicio) {
+    public void setFechaInicio(Date fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
     }
 
-    public int obtener_DuracionMinutos() {
+    public int getDuracionMinutos() {
         return duracion_minutos;
     }
 
-    public void modificar_DuracionMinutos(int duracion_minutos) {
+    public void setDuracionMinutos(int duracion_minutos) {
         this.duracion_minutos = duracion_minutos;
     }
 
