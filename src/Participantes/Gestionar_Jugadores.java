@@ -65,7 +65,7 @@ public class Gestionar_Jugadores {
 
         for (int i = 0; i < cantidad_jugadores; i++) {
 
-            if (jugadores[i].obtener_IdJugador() == id_jugador) {
+            if (jugadores[i].getIdJugador() == id_jugador) {
                 return jugadores[i];
             }
 
@@ -86,7 +86,7 @@ public class Gestionar_Jugadores {
         for (int i = 0; i < cantidad_jugadores; i++) {
 
             if (jugadores[i]
-                    .obtener_NombreJugador()
+                    .getNombreJugador()
                     .equals(nombre_jugador)) {
 
                 return jugadores[i];
