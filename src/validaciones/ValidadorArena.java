@@ -1,7 +1,8 @@
 package validaciones;
 
 import excepciones.*;
-import entidades.*; // Aquí tienen que estar las clases Torneo, Partida, Nivel
+import Entidades.Torneo;
+import Entidades.Partida;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,25 +17,23 @@ public class ValidadorArena {
         this.bitacoraErrores = new ArrayList<>();
         this.registroValido = true;
     }
-//Lo que estaba pensando es que para que el programa no se detenga en cuanto encuentre un error, haga una bitacora 
-    public boolean limpiarYValidarRegistro(Torneo torneo, Partida partida, Nivel nivel) {
+    public boolean limpiarYValidarRegistro(Torneo torneo, Partida partida) {
+        // Asumimos que el registro es válido hasta que se demuestre lo contrario
         this.registroValido = true; 
+
+        // Evaluamos cada filtro. Si uno falla, atrapamos la excepción y la guardamos en la bitácora,
+        // pero NO detenemos el programa, permitiendo evaluar los demás errores del mismo registro.
         
         try {
-            validarDatosNulosYFaltantes(new Object[]{torneo.getNombre_torneo(), partida.getResultado(), nivel.getNombre_nivel()});
+            // Pasamos un arreglo simulando datos críticos que no pueden ser nulos
+            validarDatosNulosYFaltantes(new Object[]{torneo.getNombre_torneo(), partida.getResultado()});
         } catch (DatosNulosException e) {
             registrarError(e);
         }
 
         try {
-            validarFechas(torneo.getFecha_inicio(), torneo.getDuracion(), partida.getFecha());
+            validarFechas(torneo.getFecha_inicio(), torneo.getDuracion_minutos(), partida.getFecha());
         } catch (FechaInvalidaException e) {
-            registrarError(e);
-        }
-
-        try {
-            validarNivelRoto(nivel.getPuntaje_minimo(), nivel.getPuntaje_maximo());
-        } catch (RegistroInvalidoException e) {
             registrarError(e);
         }
 
@@ -47,6 +46,7 @@ public class ValidadorArena {
         return this.registroValido;
     }
 
+    // Métodos privados
 
     private void validarDatosNulosYFaltantes(Object[] datosObtenidos) throws DatosNulosException {
         for (Object dato : datosObtenidos) {
@@ -59,21 +59,15 @@ public class ValidadorArena {
     private void validarFechas(Date fechaTorneo, int duracion, Date fechaPartida) throws FechaInvalidaException {
         if (fechaTorneo == null || fechaPartida == null) return; // Evita NullPointerException
 
-        //Tenemos un problema aquí, los torneos duran horas no días. Necesitamos saber que vamos a hacer (Yo digo que lo cambiemos a horas o minutos)
+        // Calculamos la fecha de fin del torneo sumando la duración (en minutos)
         Calendar cal = Calendar.getInstance();
         cal.setTime(fechaTorneo);
-        cal.add(Calendar.DAY_OF_MONTH, duracion);
+        cal.add(Calendar.MINUTE, duracion);
         Date fechaFinTorneo = cal.getTime();
 
+        // Si la partida es estrictamente ANTES del torneo, o estrictamente DESPUÉS del fin
         if (fechaPartida.before(fechaTorneo) || fechaPartida.after(fechaFinTorneo)) {
             throw new FechaInvalidaException(fechaTorneo, fechaPartida);
-        }
-    }
-//Este hace referencia al elo, entonces también tenemos que decidir si lo vamos a tomar en cuenta o no
-    private void validarNivelRoto(int min, int max) throws RegistroInvalidoException {
-        if (min >= max) {
-            throw new RegistroInvalidoException("Nivel", 
-                "El puntaje mínimo (" + min + ") no puede ser mayor o igual al máximo (" + max + ").");
         }
     }
 
@@ -83,11 +77,11 @@ public class ValidadorArena {
         }
     }
 
-//BItacora
+    // Bitacora
 
     private void registrarError(TorneoAjedrezException e) {
         this.bitacoraErrores.add(e.toString());
-        this.registroValido = false; //El registro ya está corrupto
+        this.registroValido = false; // El registro ya está corrupto
     }
 
     public List<String> getBitacoraErrores() {
