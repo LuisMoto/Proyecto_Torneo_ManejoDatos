@@ -16,27 +16,27 @@ public class Jugador {
         this.puntaje_acumulado = puntaje_acumulado;
     }
 
-    public int obtener_IdJugador() {
+    public int getIdJugador() {
         return id_jugador;
     }
 
-    public void modificar_IdJugador(int id_jugador) {
+    public void setIdJugador(int id_jugador) {
         this.id_jugador = id_jugador;
     }
 
-    public String obtener_NombreJugador() {
+    public String getNombreJugador() {
         return nombre_jugador;
     }
 
-    public void modificar_NombreJugador(String nombre_jugador) {
+    public void setNombreJugador(String nombre_jugador) {
         this.nombre_jugador = nombre_jugador;
     }
 
-    public double obtener_PuntajeAcumulado() {
+    public double getPuntajeAcumulado() {
         return puntaje_acumulado;
     }
 
-    public void modificar_PuntajeAcumulado(double puntaje_acumulado) {
+    public void setPuntajeAcumulado(double puntaje_acumulado) {
         this.puntaje_acumulado = puntaje_acumulado;
     }
 
