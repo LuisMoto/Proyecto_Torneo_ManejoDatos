@@ -75,23 +75,11 @@ public class MenuPrincipal {
                 System.out.println("                         REGISTRAR JUGADOR");
                 System.out.println("===============================================================\n");
 
-                int id;
-
-                while (true) {
-                    try {
-                        System.out.print("- ID del jugador: ");
-                        id = Integer.parseInt(lectura.nextLine());
-                        break;
-                    } catch (NumberFormatException e) {
-                        System.out.println("Error: el ID debe ser numérico, intentalo otra vez.\n");
-                    }
-                }
-
                 System.out.print("- Nombre del jugador: ");
                 String nombre = lectura.nextLine();
 
 
-                Jugador nuevo = new Jugador(id, nombre, 0);
+                Jugador nuevo = new Jugador(0, nombre, 0);
 
                 gestor.agregar_Jugador(nuevo);
 
