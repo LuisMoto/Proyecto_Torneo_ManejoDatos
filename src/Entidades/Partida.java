@@ -30,75 +30,75 @@ public class Partida {
         this.jugador_negras = jugador_negras;
     }
 
-    public int obtener_IdPartida() {
+    public int getIdPartida() {
         return id_partida;
     }
 
-    public void modificar_IdPartida(int id_partida) {
+    public void setIdPartida(int id_partida) {
         this.id_partida = id_partida;
     }
 
-    public Date obtener_Fecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void modificar_Fecha(Date fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
-    public String obtener_Resultado() {
+    public String getResultado() {
         return resultado;
     }
 
-    public void modificar_Resultado(String resultado) {
+    public void setResultado(String resultado) {
         this.resultado = resultado;
     }
 
-    public double obtener_PuntajeBlancas() {
+    public double getPuntajeBlancas() {
         return puntaje_blancas;
     }
 
-    public void modificar_PuntajeBlancas(double puntaje_blancas) {
+    public void setPuntajeBlancas(double puntaje_blancas) {
         this.puntaje_blancas = puntaje_blancas;
     }
 
-    public double obtener_PuntajeNegras() {
+    public double getPuntajeNegras() {
         return puntaje_negras;
     }
 
-    public void modificar_PuntajeNegras(double puntaje_negras) {
+    public void setPuntajeNegras(double puntaje_negras) {
         this.puntaje_negras = puntaje_negras;
     }
 
-    public Torneo obtener_Torneo() {
+    public Torneo getTorneo() {
         return torneo;
     }
 
-    public void modificar_Torneo(Torneo torneo) {
+    public void setTorneo(Torneo torneo) {
         this.torneo = torneo;
     }
 
-    public Jugador obtener_JugadorBlancas() {
+    public Jugador getJugadorBlancas() {
         return jugador_blancas;
     }
 
-    public void modificar_JugadorBlancas(Jugador jugador_blancas) {
+    public void setJugadorBlancas(Jugador jugador_blancas) {
         this.jugador_blancas = jugador_blancas;
     }
 
-    public Jugador obtener_JugadorNegras() {
+    public Jugador getJugadorNegras() {
         return jugador_negras;
     }
 
-    public void modificar_JugadorNegras(Jugador jugador_negras) {
+    public void setJugadorNegras(Jugador jugador_negras) {
         this.jugador_negras = jugador_negras;
     }
 
     @Override
     public String toString() {
         return "¤ Partida ID: " + id_partida +
-               " ║ Blancas: " + jugador_blancas.obtener_NombreJugador() +
-               " ║ Negras: " + jugador_negras.obtener_NombreJugador() +
+               " ║ Blancas: " + jugador_blancas.getNombreJugador() +
+               " ║ Negras: " + jugador_negras.getNombreJugador() +
                " ║ Resultado: " + resultado;
     }
 }
