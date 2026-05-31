@@ -78,7 +78,6 @@ public class MenuPrincipal {
                 System.out.print("- Nombre del jugador: ");
                 String nombre = lectura.nextLine();
 
-
                 Jugador nuevo = new Jugador(0, nombre, 0);
 
                 gestor.agregar_Jugador(nuevo);
