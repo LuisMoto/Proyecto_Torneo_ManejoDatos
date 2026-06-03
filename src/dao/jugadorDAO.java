@@ -12,8 +12,8 @@ public class JugadorDAO {
         String sql = "INSERT INTO Jugador (nombre_jugador, puntaje_acumulado) VALUES (?, ?)";
         try (Connection con = ConexionMySQL.obtenerConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, jugador.getNombre_jugador());
-            ps.setDouble(2, jugador.getPuntaje_acumulado());
+            ps.setString(1, jugador.getNombreJugador());
+            ps.setDouble(2, jugador.getPuntajeAcumulado());
             ps.executeUpdate();
         }
     }
