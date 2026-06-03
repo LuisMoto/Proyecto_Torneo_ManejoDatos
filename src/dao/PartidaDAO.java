@@ -12,11 +12,11 @@ public class PartidaDAO {
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setTimestamp(1, new Timestamp(partida.getFecha().getTime()));
             ps.setString(2, partida.getResultado());
-            ps.setDouble(3, partida.getPuntaje_blancas());
-            ps.setDouble(4, partida.getPuntaje_negras());
-            ps.setInt(5, partida.getTorneo().getId_torneo());
-            ps.setInt(6, partida.getJugador_blancas().getId_jugador());
-            ps.setInt(7, partida.getJugador_negras().getId_jugador());
+            ps.setDouble(3, partida.getPuntajeBlancas());
+            ps.setDouble(4, partida.getPuntajeNegras());
+            ps.setInt(5, partida.getTorneo().getIdTorneo());
+            ps.setInt(6, partida.getJugadorBlancas().getIdJugador());
+            ps.setInt(7, partida.getJugadorNegras().getIdJugador());
             ps.executeUpdate();
         }
     }
