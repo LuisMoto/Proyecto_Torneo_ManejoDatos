@@ -12,10 +12,10 @@ public class TorneoDAO {
         String sql = "INSERT INTO Torneo (nombre_torneo, tipo, fecha_inicio, duracion_minutos) VALUES (?, ?, ?, ?)";
         try (Connection con = ConexionMySQL.obtenerConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, torneo.getNombre_torneo());
+            ps.setString(1, torneo.getNombreTorneo());
             ps.setString(2, torneo.getTipo());
-            ps.setTimestamp(3, new Timestamp(torneo.getFecha_inicio().getTime()));
-            ps.setInt(4, torneo.getDuracion_minutos());
+            ps.setTimestamp(3, new Timestamp(torneo.getFechaInicio().getTime()));
+            ps.setInt(4, torneo.getDuracionMinutos());
             ps.executeUpdate();
         }
     }
