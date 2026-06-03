@@ -3,6 +3,8 @@
         "src"
     ],
     "java.project.referencedLibraries": [
+        "lib\\mysql-connector-j-9.7.0.jar",
+        "c:\\Users\\admon\\Documents\\UNIVERSIDAD\\Manejo de datos\\Proyecto_Torneo_ManejoDatos\\lib\\mysql-connector-j-9.7.0.jar",
         "lib/mysql-connector-j-9.7.0.jar"
     ]
 }
