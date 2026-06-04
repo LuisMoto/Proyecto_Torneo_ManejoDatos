@@ -205,8 +205,7 @@ public class MenuPrincipal {
 
             List<Jugador> listaJugadores = jugadorDAO.obtenerTodos();
 
-            Gestionar_Jugadores gestor =
-                    new Gestionar_Jugadores(listaJugadores);
+            Gestionar_Jugadores gestor = new Gestionar_Jugadores(listaJugadores);
 
             gestor.mostrarJugadores();
 
@@ -234,8 +233,7 @@ public class MenuPrincipal {
 
             List<Jugador> listaJugadores = jugadorDAO.obtenerTodos();
 
-            Gestionar_Jugadores gestor =
-                    new Gestionar_Jugadores(listaJugadores);
+            Gestionar_Jugadores gestor = new Gestionar_Jugadores(listaJugadores);
 
             System.out.println("1. Buscar por ID.");
             System.out.println("2. Buscar por nombre.");
@@ -302,17 +300,19 @@ public class MenuPrincipal {
      * una estructura de cola.
      * Estado : Pendiente.
      */
-
     private static void gestionarDuelos() {
 
         System.out.println("\n------------- GESTIONAR DUELOS -------------");
 
         try {
-
             List<Jugador> lista = jugadorDAO.obtenerTodos();
+
             Gestionar_Jugadores gestor = new Gestionar_Jugadores(lista);
 
             Jugador[] jugadores = gestor.getJugadores();
+
+            // Limpiar cola antes de volver a cargar
+            gestorDuelos.limpiarCola();
 
             // Meter jugadores en la cola
             for (Jugador j : jugadores) {
@@ -322,9 +322,8 @@ public class MenuPrincipal {
             // Mostrar cola
             gestorDuelos.mostrarCola();
 
-            // Realizar duelo
-            gestorDuelos.realizarDuelo();
-
+            // Realizar ronda completa (NO solo un duelo)
+            gestorDuelos.realizarRonda();
         } catch (SQLException e) {
             System.out.println("Error en base de datos: " + e.getMessage());
         } catch (Exception e) {
