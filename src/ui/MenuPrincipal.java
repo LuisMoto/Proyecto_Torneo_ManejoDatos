@@ -57,7 +57,7 @@ public class MenuPrincipal {
         System.out.println("├─────────────────────────────────────────┤");
         System.out.println("│ A - Registrar jugador                   │");
         System.out.println("│ B - Ver lista de jugadores              │");
-        System.out.println("│ C - Buscar jugador por ID               │");
+        System.out.println("│ C - Buscar jugador por ID o nombre      │");
         System.out.println("│ D - Gestionar duelos                    │");
         System.out.println("│ E - Historial de partidas               │");
         System.out.println("│ F - Ranking actual                      │");
@@ -114,8 +114,9 @@ public class MenuPrincipal {
                 break;
 
             case 'C':
-                buscarJugadorPorID();
+                buscarJugador();
                 break;
+
 
             case 'D':
                 gestionarDuelos();
@@ -169,7 +170,8 @@ public class MenuPrincipal {
 
             jugadorDAO.insertar(nuevo);
 
-            System.out.println("\nJugador registrado exitosamente.");
+            System.out.println("\nJugador registrado exitosamente:");
+            System.out.println(nuevo);
 
         } catch (DatosNulosException e) {
 
@@ -216,26 +218,58 @@ public class MenuPrincipal {
         }
     }
 
-    /**
-     * Opción C: Busca un jugador por su ID y muestra sus datos.
-     * Si el ID no existe, muestra un mensaje indicándolo.
-     * Si el usuario ingresa un valor no numérico, se maneja la excepción.
-     */
-    private static void buscarJugadorPorID() {
 
-        System.out.println("\n------ BUSCAR JUGADOR POR ID ------");
+    /**
+     * Opción C: Busca un jugador por su ID o por su nombre y muestra sus datos.
+     * Si el jugador no existe, muestra un mensaje indicándolo.
+     * Si el usuario ingresa un valor inválido, se maneja la excepción.
+     */
+    private static void buscarJugador() {
+
+        System.out.println("\n------ BUSCAR JUGADOR ------");
 
         try {
-
-            System.out.print("ID del jugador: ");
-            int id = Integer.parseInt(lectura.nextLine().trim());
 
             List<Jugador> listaJugadores = jugadorDAO.obtenerTodos();
 
             Gestionar_Jugadores gestor =
                     new Gestionar_Jugadores(listaJugadores);
 
-            Jugador encontrado = gestor.buscar_IdJugador(id);
+            System.out.println("1. Buscar por ID.");
+            System.out.println("2. Buscar por nombre.");
+            System.out.print("Seleccione una opción: ");
+
+            int opcionBusqueda = Integer.parseInt(lectura.nextLine().trim());
+
+            Jugador encontrado = null;
+
+            switch (opcionBusqueda) {
+
+                case 1:
+
+                    System.out.print("» ID del jugador: ");
+
+                    int id = Integer.parseInt(lectura.nextLine().trim());
+
+                    encontrado = gestor.buscar_IdJugador(id);
+
+                    break;
+
+                case 2:
+
+                    System.out.print("» Nombre del jugador: ");
+
+                    String nombre = lectura.nextLine().trim();
+
+                    encontrado = gestor.buscar_NombreJugador(nombre);
+
+                    break;
+
+                default:
+
+                    System.out.println("Opción de búsqueda no válida.");
+                    return;
+            }
 
             if (encontrado != null) {
 
@@ -244,12 +278,12 @@ public class MenuPrincipal {
 
             } else {
 
-                System.out.println("No se encontró ningún jugador con ID: " + id);
+                System.out.println("\n¡Jugador no encontrado!");
             }
 
         } catch (NumberFormatException e) {
 
-            System.out.println("Error: El ID debe ser un número entero.");
+            System.out.println("Error: Debe ingresar un valor válido.");
 
         } catch (SQLException e) {
 
