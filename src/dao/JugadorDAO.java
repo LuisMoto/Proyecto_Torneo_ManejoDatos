@@ -8,15 +8,36 @@ import java.util.List;
 
 public class JugadorDAO {
 
+    // public void insertar(Jugador jugador) throws SQLException {
+    //     String sql = "INSERT INTO Jugador (nombre_jugador, puntaje_acumulado) VALUES (?, ?)";
+    //     try (Connection con = ConexionMySQL.obtenerConexion();
+    //          PreparedStatement ps = con.prepareStatement(sql)) {
+    //         ps.setString(1, jugador.getNombreJugador());
+    //         ps.setDouble(2, jugador.getPuntajeAcumulado());
+    //         ps.executeUpdate();
+    //     }
+    // }
+
     public void insertar(Jugador jugador) throws SQLException {
-        String sql = "INSERT INTO Jugador (nombre_jugador, puntaje_acumulado) VALUES (?, ?)";
+
+        String sql = "INSERT INTO Jugador(nombre_jugador,puntaje_acumulado) VALUES(?,?)";
         try (Connection con = ConexionMySQL.obtenerConexion();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, jugador.getNombreJugador());
             ps.setDouble(2, jugador.getPuntajeAcumulado());
             ps.executeUpdate();
+
+            ResultSet rs = ps.getGeneratedKeys();
+
+            if (rs.next()) {
+                jugador.setIdJugador(rs.getInt(1));
+            }
         }
     }
+
+
+
+
 
     public Jugador buscarPorId(int id) throws SQLException {
         String sql = "SELECT * FROM Jugador WHERE id_jugador = ?";
