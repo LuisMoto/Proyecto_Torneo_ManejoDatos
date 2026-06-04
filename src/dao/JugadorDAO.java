@@ -25,10 +25,6 @@ public class JugadorDAO {
         }
     }
 
-
-
-
-
     public Jugador buscarPorId(int id) throws SQLException {
         String sql = "SELECT * FROM Jugador WHERE id_jugador = ?";
         try (Connection con = ConexionMySQL.obtenerConexion();
