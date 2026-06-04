@@ -1,88 +1,36 @@
 package Participantes;
 
 import Entidades.Jugador;
+import java.util.List;
 
 /**
- * Clase encargada de administrar los jugadores
- * mediante un arreglo.
+ * Clase encargada de cargar jugadores en un arreglo
+ * para cumplir con el requisito de la práctica.
  */
 public class Gestionar_Jugadores {
 
-    // Arreglo donde se almacenan los jugadores.
     private Jugador[] jugadores;
 
-    // Cantidad de jugadores registrados.
-    private int cantidad_jugadores;
+    public Gestionar_Jugadores(List<Jugador> listaJugadores) {
 
-    // Control de ID automático
-    private int siguiente_id = 1;
+        jugadores = new Jugador[listaJugadores.size()];
 
-    public Gestionar_Jugadores() {
-        jugadores = new Jugador[100];
-        cantidad_jugadores = 0;
-    }
-
-    /**
-     * Agrega un jugador al arreglo.
-     */
-    public void agregar_Jugador(Jugador jugador) {
-
-        if (cantidad_jugadores < jugadores.length) {
-
-            // Asignar ID automaticamente
-            jugador.setIdJugador(siguiente_id);
-            siguiente_id++;
-
-            jugadores[cantidad_jugadores] = jugador;
-            cantidad_jugadores++;
-
-        } else {
-            System.out.println("No hay espacio para más jugadores.");
+        for (int i = 0; i < listaJugadores.size(); i++) {
+            jugadores[i] = listaJugadores.get(i);
         }
     }
 
-    // Mostrar jugadores registrados
-    public void mostrar_Jugadores() {
+    public void mostrarJugadores() {
 
-        if (cantidad_jugadores == 0) {
+        if (jugadores.length == 0) {
             System.out.println("No hay jugadores registrados.");
             return;
         }
 
-        System.out.println("\n«««««««««« JUGADORES REGISTRADOS »»»»»»»»»»");
+        System.out.println("\n«««««««««« LISTA DE JUGADORES »»»»»»»»»»");
 
-        for (int i = 0; i < cantidad_jugadores; i++) {
-            System.out.println(jugadores[i]);
+        for (Jugador jugador : jugadores) {
+            System.out.println(jugador);
         }
-    }
-
-    /**
-     * Busca un jugador por ID.
-     */
-    public Jugador buscar_IdJugador(int id_jugador) {
-
-        for (int i = 0; i < cantidad_jugadores; i++) {
-
-            if (jugadores[i].getIdJugador() == id_jugador) {
-                return jugadores[i];
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Busca un jugador por nombre.
-     */
-    public Jugador buscar_NombreJugador(String nombre_jugador) {
-
-        for (int i = 0; i < cantidad_jugadores; i++) {
-
-            if (jugadores[i].getNombreJugador().equals(nombre_jugador)) {
-                return jugadores[i];
-            }
-        }
-
-        return null;
     }
 }
