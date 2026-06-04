@@ -20,6 +20,9 @@ public class Gestionar_Jugadores {
         }
     }
 
+    /**
+     * Muestra todos los jugadores.
+     */
     public void mostrarJugadores() {
 
         if (jugadores.length == 0) {
@@ -27,10 +30,47 @@ public class Gestionar_Jugadores {
             return;
         }
 
-        System.out.println("\n«««««««««« LISTA DE JUGADORES »»»»»»»»»»");
+        System.out.println("\n««««««««««««««« JUGADORES »»»»»»»»»»»»»»»");
 
         for (Jugador jugador : jugadores) {
             System.out.println(jugador);
         }
+    }
+
+    /**
+     * Busca un jugador por ID.
+     */
+    public Jugador buscar_IdJugador(int idJugador) {
+
+        for (Jugador jugador : jugadores) {
+
+            if (jugador.getIdJugador() == idJugador) {
+                return jugador;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Busca un jugador por nombre.
+     */
+    public Jugador buscar_NombreJugador(String nombreJugador) {
+
+        for (Jugador jugador : jugadores) {
+
+            if (jugador.getNombreJugador().equalsIgnoreCase(nombreJugador)) {
+                return jugador;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Devuelve el arreglo de jugadores.
+     */
+    public Jugador[] getJugadores() {
+        return jugadores;
     }
 }
