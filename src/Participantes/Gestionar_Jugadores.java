@@ -5,7 +5,6 @@ import java.util.List;
 
 /**
  * Clase encargada de cargar jugadores en un arreglo
- * para cumplir con el requisito de la práctica.
  */
 public class Gestionar_Jugadores {
 
@@ -21,7 +20,7 @@ public class Gestionar_Jugadores {
     }
 
     /**
-     * Muestra todos los jugadores.
+     * Muestra todos los jugadores
      */
     public void mostrarJugadores() {
 
@@ -38,7 +37,7 @@ public class Gestionar_Jugadores {
     }
 
     /**
-     * Busca un jugador por ID.
+     * Busca un jugador por ID
      */
     public Jugador buscar_IdJugador(int idJugador) {
 
@@ -53,7 +52,7 @@ public class Gestionar_Jugadores {
     }
 
     /**
-     * Busca un jugador por nombre.
+     * Busca un jugador por nombre
      */
     public Jugador buscar_NombreJugador(String nombreJugador) {
 
@@ -68,7 +67,7 @@ public class Gestionar_Jugadores {
     }
 
     /**
-     * Devuelve el arreglo de jugadores.
+     * Devuelve el arreglo de jugadores
      */
     public Jugador[] getJugadores() {
         return jugadores;
