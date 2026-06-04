@@ -5,6 +5,7 @@ import excepciones.DatosNulosException;
 import Entidades.Jugador;
 import Participantes.Gestionar_Jugadores;
 import dao.JugadorDAO;
+import Participantes.Gestionar_Duelos;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -24,6 +25,7 @@ public class MenuPrincipal {
 
     private static Scanner lectura = new Scanner(System.in);
     private static JugadorDAO jugadorDAO = new JugadorDAO();
+    private static Gestionar_Duelos gestorDuelos = new Gestionar_Duelos();
 
     /**
      * Método principal que inicia la aplicación y muestra el menú al usuario.
@@ -300,10 +302,34 @@ public class MenuPrincipal {
      * una estructura de cola.
      * Estado : Pendiente.
      */
+
     private static void gestionarDuelos() {
 
-        System.out.println("\n------ GESTIONAR DUELOS ------");
-        System.out.println("Funcionalidad pendiente de implementar.");
+        System.out.println("\n------------- GESTIONAR DUELOS -------------");
+
+        try {
+
+            List<Jugador> lista = jugadorDAO.obtenerTodos();
+            Gestionar_Jugadores gestor = new Gestionar_Jugadores(lista);
+
+            Jugador[] jugadores = gestor.getJugadores();
+
+            // Meter jugadores en la cola
+            for (Jugador j : jugadores) {
+                gestorDuelos.agregarJugador(j);
+            }
+
+            // Mostrar cola
+            gestorDuelos.mostrarCola();
+
+            // Realizar duelo
+            gestorDuelos.realizarDuelo();
+
+        } catch (SQLException e) {
+            System.out.println("Error en base de datos: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error en duelos: " + e.getMessage());
+        }
     }
 
     /**
