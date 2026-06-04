@@ -8,16 +8,6 @@ import java.util.List;
 
 public class JugadorDAO {
 
-    // public void insertar(Jugador jugador) throws SQLException {
-    //     String sql = "INSERT INTO Jugador (nombre_jugador, puntaje_acumulado) VALUES (?, ?)";
-    //     try (Connection con = ConexionMySQL.obtenerConexion();
-    //          PreparedStatement ps = con.prepareStatement(sql)) {
-    //         ps.setString(1, jugador.getNombreJugador());
-    //         ps.setDouble(2, jugador.getPuntajeAcumulado());
-    //         ps.executeUpdate();
-    //     }
-    // }
-
     public void insertar(Jugador jugador) throws SQLException {
 
         String sql = "INSERT INTO Jugador(nombre_jugador,puntaje_acumulado) VALUES(?,?)";
