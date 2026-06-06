@@ -29,7 +29,7 @@ public class Gestionar_Jugadores {
             return;
         }
 
-        System.out.println("\n««««««««««««««« JUGADORES »»»»»»»»»»»»»»»");
+        System.out.println("\n======================= JUGADORES =======================");
 
         for (Jugador jugador : jugadores) {
             System.out.println(jugador);
@@ -66,10 +66,27 @@ public class Gestionar_Jugadores {
         return null;
     }
 
-    /**
-     * Devuelve el arreglo de jugadores
-     */
     public Jugador[] getJugadores() {
         return jugadores;
     }
+
+    /**
+     * Devuelve la cantidad de jugadores.
+     */
+    public int cantidadJugadores() {
+        return jugadores.length;
+    }
+
+    /**
+     * Obtiene un jugador según su posición.
+     */
+    public Jugador getJugador(int indice) {
+
+        if (indice < 0 || indice >= jugadores.length) {
+            return null;
+        }
+
+        return jugadores[indice];
+    }
+
 }
