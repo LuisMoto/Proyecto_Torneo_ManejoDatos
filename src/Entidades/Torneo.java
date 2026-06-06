@@ -11,7 +11,6 @@ public class Torneo {
     private int duracion_minutos;
 
     public Torneo() {
-
     }
 
     public Torneo(int id_torneo, String nombre_torneo, String tipo, Date fecha_inicio, int duracion_minutos) {
@@ -64,9 +63,9 @@ public class Torneo {
 
     @Override
     public String toString() {
-        return "¤ ID: " + id_torneo +
-               " ║ Torneo: " + nombre_torneo +
-               " ║ Tipo: " + tipo +
-               " ║ Duración: " + duracion_minutos + " min";
+        return "¤ ID: " + id_torneo
+                + " ║ Torneo: " + nombre_torneo
+                + " ║ Tipo: " + tipo
+                + " ║ Duración: " + duracion_minutos + " min";
     }
 }
