@@ -532,7 +532,7 @@ public class MenuPrincipal {
 
                 System.out.println("\nID de la partida: " + partida.getIdPartida());
                 System.out.println("Torneo: " + partida.getTorneo().getNombreTorneo());
-                System.out.println("╬ " + partida.getJugadorBlancas().getNombreJugador() + " vs " + partida.getJugadorNegras().getNombreJugador() + " ╬");
+                System.out.println("╬  " + partida.getJugadorBlancas().getNombreJugador() + " vs " + partida.getJugadorNegras().getNombreJugador() + "  ╬");
 
                 
             }
@@ -630,7 +630,7 @@ public class MenuPrincipal {
                 Partida partida = partidas.get(i);
                 System.out.println("\n───────────────────────────────────────────────────");
                 System.out.println("Torneo: " + partida.getTorneo().getNombreTorneo());
-                System.out.println(partida.getJugadorBlancas().getNombreJugador() + " vs " + partida.getJugadorNegras().getNombreJugador());
+                System.out.println("╬  "+ partida.getJugadorBlancas().getNombreJugador() + " vs " + partida.getJugadorNegras().getNombreJugador() + "  ╬");
                 System.out.println("Resultado: " + partida.getResultado());
                 System.out.println("Estado: " + partida.getEstado());
                 System.out.println("Fecha: " + partida.getFecha());
