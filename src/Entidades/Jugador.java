@@ -7,7 +7,6 @@ public class Jugador {
     private double puntaje_acumulado;
 
     public Jugador() {
-        
     }
 
     public Jugador(int id_jugador, String nombre_jugador, double puntaje_acumulado) {
@@ -42,9 +41,8 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return "¤ ID: " + id_jugador +
-               " ║ Nombre: " + nombre_jugador +
-               " ║ Puntaje: " + puntaje_acumulado;
+        return "¤ ID: " + id_jugador
+                + " ║ Nombre: " + nombre_jugador
+                + " ║ Puntaje: " + puntaje_acumulado;
     }
 }
-
