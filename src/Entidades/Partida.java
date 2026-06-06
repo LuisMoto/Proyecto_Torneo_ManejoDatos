@@ -9,22 +9,22 @@ public class Partida {
     private String resultado;
     private double puntaje_blancas;
     private double puntaje_negras;
+    private String estado;
 
     private Torneo torneo;
-
     private Jugador jugador_blancas;
     private Jugador jugador_negras;
 
     public Partida() {
-
     }
 
-    public Partida(int id_partida, Date fecha, String resultado, double puntaje_blancas, double puntaje_negras, Torneo torneo, Jugador jugador_blancas, Jugador jugador_negras) {
+    public Partida(int id_partida, Date fecha, String resultado, double puntaje_blancas, double puntaje_negras, String estado, Torneo torneo, Jugador jugador_blancas,Jugador jugador_negras) {
         this.id_partida = id_partida;
         this.fecha = fecha;
         this.resultado = resultado;
         this.puntaje_blancas = puntaje_blancas;
         this.puntaje_negras = puntaje_negras;
+        this.estado = estado;
         this.torneo = torneo;
         this.jugador_blancas = jugador_blancas;
         this.jugador_negras = jugador_negras;
@@ -70,6 +70,14 @@ public class Partida {
         this.puntaje_negras = puntaje_negras;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     public Torneo getTorneo() {
         return torneo;
     }
@@ -96,9 +104,31 @@ public class Partida {
 
     @Override
     public String toString() {
-        return "¤ Partida ID: " + id_partida +
-               " ║ Blancas: " + jugador_blancas.getNombreJugador() +
-               " ║ Negras: " + jugador_negras.getNombreJugador() +
-               " ║ Resultado: " + resultado;
+
+        String nombreTorneo =
+                (torneo != null)
+                ? torneo.getNombreTorneo()
+                : "Sin torneo";
+
+        String blancas =
+                (jugador_blancas != null)
+                ? jugador_blancas.getNombreJugador()
+                : "Sin asignar";
+
+        String negras =
+                (jugador_negras != null)
+                ? jugador_negras.getNombreJugador()
+                : "Sin asignar";
+
+        return "\n══════════════════════════════"
+                + "\nTorneo: " + nombreTorneo
+                + "\nPartida #" + id_partida
+                + "\nBlancas: " + blancas
+                + "\nNegras: " + negras
+                + "\nResultado: " + resultado
+                + "\nPuntos Blancas: " + puntaje_blancas
+                + "\nPuntos Negras: " + puntaje_negras
+                + "\nEstado: " + estado
+                + "\nFecha: " + fecha;
     }
 }
