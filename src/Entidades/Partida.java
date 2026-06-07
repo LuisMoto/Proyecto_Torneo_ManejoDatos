@@ -2,22 +2,41 @@ package Entidades;
 
 import java.util.Date;
 
+/**
+ * Representa una partida de ajedrez dentro de un torneo.
+ *
+ * Una partida registra la información de los jugadores
+ * participantes, el torneo al que pertenece, el resultado
+ * obtenido y los puntos asignados a cada jugador.
+ */
 public class Partida {
 
     private int id_partida;
-    private Date fecha;
-    private String resultado;
+    private Date fecha;                                     // Fecha en la que se programó o jugó la partida.
+    private String resultado;                               // Resultado de la partida (1-0, 0-1 o 1/2-1/2)
     private double puntaje_blancas;
     private double puntaje_negras;
-    private String estado;
-
-    private Torneo torneo;
+    private String estado;                                  // Estado actual de la partida (PENDIENTE o FINALIZADA).
+    private Torneo torneo;                                  // Torneo al que pertenece la partida.
     private Jugador jugador_blancas;
     private Jugador jugador_negras;
 
     public Partida() {
     }
 
+    /**
+     * Constructor completo de la clase Partida.
+     *
+     * @param id_partida Identificador de la partida.
+     * @param fecha Fecha de la partida.
+     * @param resultado Resultado registrado.
+     * @param puntaje_blancas Puntaje obtenido por blancas.
+     * @param puntaje_negras Puntaje obtenido por negras.
+     * @param estado Estado de la partida.
+     * @param torneo Torneo asociado.
+     * @param jugador_blancas Jugador con piezas blancas.
+     * @param jugador_negras Jugador con piezas negras.
+     */
     public Partida(int id_partida, Date fecha, String resultado, double puntaje_blancas, double puntaje_negras, String estado, Torneo torneo, Jugador jugador_blancas,Jugador jugador_negras) {
         this.id_partida = id_partida;
         this.fecha = fecha;
@@ -102,6 +121,12 @@ public class Partida {
         this.jugador_negras = jugador_negras;
     }
 
+    /**
+     * Devuelve una representación legible de la partida
+     * para mostrarla en consola.
+     *
+     * @return Cadena con los datos principales de la partida.
+     */
     @Override
     public String toString() {
 
@@ -120,7 +145,7 @@ public class Partida {
                 ? jugador_negras.getNombreJugador()
                 : "Sin asignar";
 
-        return "\n══════════════════════════════"
+        return "\n══════════════════════════════════════"
                 + "\nTorneo: " + nombreTorneo
                 + "\nPartida #" + id_partida
                 + "\nBlancas: " + blancas
