@@ -1,14 +1,29 @@
 package Entidades;
 
+/**
+ * Representa a un jugador participante en los torneos de ajedrez.
+ *
+ * Cada jugador posee ID,  nombre y un puntaje acumulado
+ * utilizado para generar el ranking.
+ */
 public class Jugador {
-
     private int id_jugador;
     private String nombre_jugador;
     private double puntaje_acumulado;
 
+     /**
+     * Constructor vacío.
+     */
     public Jugador() {
     }
 
+    /**
+     * Constructor completo de la entidad Jugador.
+     *
+     * @param id_jugador ID del jugador.
+     * @param nombre_jugador Nombre del jugador.
+     * @param puntaje_acumulado Puntaje acumulado en el sistema.
+     */
     public Jugador(int id_jugador, String nombre_jugador, double puntaje_acumulado) {
         this.id_jugador = id_jugador;
         this.nombre_jugador = nombre_jugador;
@@ -39,6 +54,11 @@ public class Jugador {
         this.puntaje_acumulado = puntaje_acumulado;
     }
 
+    /**
+     * Devuelve una representación textual del jugador.
+     *
+     * @return Información principal del jugador.
+     */
     @Override
     public String toString() {
         return "¤ ID: " + id_jugador
