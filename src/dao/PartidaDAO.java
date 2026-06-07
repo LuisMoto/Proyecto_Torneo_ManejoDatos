@@ -9,15 +9,27 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase de acceso a datos (DAO) para la entidad Partida.
+ *
+ * Gestiona las operaciones de persistencia relacionadas con las
+ * partidas de ajedrez, incluyendo registro, consulta,
+ * actualización de resultados e historial de jugadores.
+ */
 public class PartidaDAO {
 
+
 /**
- * Insertar partida.
+ * Registra una nueva partida en la base de datos.
+ *
+ * @param partida Partida que será almacenada.
+ * @throws SQLException Si ocurre un error durante la inserción.
  */
 public void insertar(Partida partida) throws SQLException {
 
     String sql = """
-        INSERT INTO Partida(fecha, resultado, puntaje_blancas, puntaje_negras,id_torneo, jugador_blancas, jugador_negras, estado)
+        INSERT INTO Partida
+        (fecha, resultado, puntaje_blancas, puntaje_negras,id_torneo, jugador_blancas, jugador_negras, estado)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         """;
 
@@ -41,8 +53,13 @@ public void insertar(Partida partida) throws SQLException {
     }
 }
 
+
 /**
- * Buscar partida por ID.
+ * Busca una partida utilizando su ID.
+ *
+ * @param id ID de la partida.
+ * @return Objeto Partida si existe; null en caso contrario.
+ * @throws SQLException Si ocurre un error durante la consulta.
  */
 public Partida buscarPorId(int id) throws SQLException {
 
@@ -100,8 +117,13 @@ public Partida buscarPorId(int id) throws SQLException {
     return null;
 }
 
+
 /**
- * Historial de partidas de un jugador.
+ * Obtiene las últimas cinco partidas asociadas a un jugador.
+ *
+ * @param idJugador ID del jugador.
+ * @return Lista con las últimas cinco partidas encontradas.
+ * @throws SQLException Si ocurre un error durante la consulta.
  */
 public List<Partida> obtenerPartidasJugador(
         int idJugador)
@@ -166,8 +188,13 @@ public List<Partida> obtenerPartidasJugador(
     return lista;
 }
 
+
 /**
- * Actualizar estado.
+ * Modifica el estado de una partida.
+ *
+ * @param idPartida ID de la partida.
+ * @param estado Nuevo estado de la partida.
+ * @throws SQLException Si ocurre un error durante la actualización.
  */
 public void actualizarEstado(
         int idPartida,
@@ -185,8 +212,12 @@ public void actualizarEstado(
     }
 }
 
+
 /**
- * Partidas pendientes.
+ * Recupera todas las partidas pendientes de ejecución.
+ *
+ * @return Lista de partidas con estado PENDIENTE.
+ * @throws SQLException Si ocurre un error durante la consulta.
  */
 public List<Partida> obtenerPendientes()
         throws SQLException {
@@ -243,8 +274,16 @@ public List<Partida> obtenerPendientes()
     return lista;
 }
 
+
 /**
- * Actualiza resultado y puntajes.
+ * Actualiza el resultado de una partida y registra los
+ * puntajes obtenidos por ambos jugadores.
+ *
+ * @param idPartida ID de la partida.
+ * @param resultado Resultado final de la partida.
+ * @param puntajeBlancas Puntaje obtenido por el jugador de blancas.
+ * @param puntajeNegras Puntaje obtenido por el jugador de negras.
+ * @throws SQLException Si ocurre un error durante la actualización.
  */
 public void actualizarResultado(
         int idPartida,
@@ -275,3 +314,4 @@ public void actualizarResultado(
 }
 
 }
+
