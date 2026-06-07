@@ -7,11 +7,21 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase de acceso a datos (DAO) para la entidad Torneo.
+ *
+ * Permite realizar operaciones de persistencia sobre los torneos,
+ * incluyendo registro, búsqueda y consulta de los torneos
+ * almacenados en la base de datos.
+ */
 public class TorneoDAO {
 
 
 /**
- * Inserta un torneo.
+ * Inserta un nuevo torneo en la base de datos.
+ *
+ * @param torneo Torneo que será registrado.
+ * @throws SQLException Si ocurre un error durante la inserción.
  */
 public void insertar(Torneo torneo) throws SQLException {
 
@@ -40,7 +50,11 @@ public void insertar(Torneo torneo) throws SQLException {
 }
 
 /**
- * Busca torneo por ID.
+ * Busca un torneo a partir de su identificador.
+ *
+ * @param id ID del torneo.
+ * @return Objeto Torneo si existe; null en caso contrario.
+ * @throws SQLException Si ocurre un error durante la consulta.
  */
 public Torneo buscarPorId(int id) throws SQLException {
 
@@ -73,7 +87,11 @@ public Torneo buscarPorId(int id) throws SQLException {
 }
 
 /**
- * Busca torneo por nombre.
+ * Busca un torneo utilizando su nombre.
+ *
+ * @param nombre Nombre del torneo.
+ * @return Objeto Torneo si existe; null en caso contrario.
+ * @throws SQLException Si ocurre un error durante la consulta.
  */
 public Torneo buscarPorNombre(String nombre) throws SQLException {
 
@@ -105,8 +123,12 @@ public Torneo buscarPorNombre(String nombre) throws SQLException {
     return null;
 }
 
+
 /**
- * Obtiene todos los torneos.
+ * Recupera todos los torneos registrados en la base de datos.
+ *
+ * @return Lista con todos los torneos almacenados.
+ * @throws SQLException Si ocurre un error durante la consulta.
  */
 public List<Torneo> obtenerTodos() throws SQLException {
 
@@ -137,3 +159,4 @@ public List<Torneo> obtenerTodos() throws SQLException {
 
 
 }
+
