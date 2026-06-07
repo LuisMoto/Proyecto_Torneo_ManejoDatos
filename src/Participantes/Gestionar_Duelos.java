@@ -5,32 +5,44 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * Gestiona las partidas pendientes usando una cola
+ * Gestiona las partidas pendientes utilizando una cola.
+ * Las partidas se atienden siguiendo el principio FIFO
  */
 public class Gestionar_Duelos {
 
+    /**
+     * Cola que almacena las partidas pendientes.
+     */
     private Queue<Partida> colaPartidas;
 
+    /**
+     * Inicializa una cola vacía de partidas.
+     */
     public Gestionar_Duelos() {
         colaPartidas = new LinkedList<>();
     }
 
     /**
-     * Agrega una partida a la cola
+     * Agrega una nueva partida al final de la cola.
+     *
+     * @param partida Partida que será agregada.
      */
     public void agregarPartida(Partida partida) {
         colaPartidas.offer(partida);
     }
 
     /**
-     * Obtiene y elimina la siguiente partida
+     * Obtiene y elimina la siguiente partida pendiente.
+     *
+     * @return La partida que se encontraba al inicio de la cola
+     * o null si la cola está vacía.
      */
     public Partida ejecutarSiguientePartida() {
         return colaPartidas.poll();
     }
 
     /**
-     * Muestra todas las partidas pendientes
+     * Muestra todas las partidas pendientes almacenadas en la cola
      */
     public void mostrarCola() {
 
@@ -47,21 +59,31 @@ public class Gestionar_Duelos {
     }
 
     /**
-     * Consulta la siguiente partida sin eliminarla
+     * Consulta la siguiente partida pendiente
+     * sin eliminarla de la cola.
+     *
+     * @return La siguiente partida pendiente o null
+     * si la cola está vacía.
      */
     public Partida verSiguientePartida() {
         return colaPartidas.peek();
     }
 
     /**
-     * Verifica si la cola está vacía
+     * Verifica si existen partidas pendientes.
+     *
+     * @return true si la cola está vacía;
+     * false en caso contrario.
      */
     public boolean estaVacia() {
         return colaPartidas.isEmpty();
     }
 
     /**
-     * Cantidad de partidas pendientes
+     * Obtiene la cantidad de partidas
+     * almacenadas en la cola.
+     *
+     * @return Número de partidas pendientes.
      */
     public int cantidadPartidas() {
         return colaPartidas.size();
