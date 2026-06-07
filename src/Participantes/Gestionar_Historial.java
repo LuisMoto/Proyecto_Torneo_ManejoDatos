@@ -4,10 +4,14 @@ import Entidades.Partida;
 import java.util.Stack;
 
 /**
- * Gestiona el historial de partidas usando una pila
+ * Gestiona el historial de partidas utilizando una pila.
+ * Las partidas se almacenan siguiendo el principio LIFO
  */
 public class Gestionar_Historial {
 
+    /**
+     * Pila que almacena el historial de partidas.
+     */
     private Stack<Partida> historial;
 
     public Gestionar_Historial() {
@@ -15,14 +19,18 @@ public class Gestionar_Historial {
     }
 
     /**
-     * Agrega una partida al historial
+     * Agrega una partida al historial.
+     *
+     * @param partida Partida que se registrará en la pila.
      */
     public void agregarPartida(Partida partida) {
         historial.push(partida);
     }
 
     /**
-     * Muestra las últimas 5 partidas
+     * Muestra las últimas cinco partidas registradas.
+     * Si existen menos de cinco partidas, se muestran
+     * únicamente las disponibles.
      */
     public void mostrarUltimasCinco() {
 
@@ -44,14 +52,19 @@ public class Gestionar_Historial {
     }
 
     /**
-     * Obtiene la pila completa
+     * Obtiene la pila completa de partidas registradas.
+     *
+     * @return Historial completo de partidas.
      */
     public Stack<Partida> getHistorial() {
         return historial;
     }
 
     /**
-     * Devuelve la cantidad de partidas registradas
+     * Obtiene la cantidad total de partidas almacenadas
+     * en el historial.
+     *
+     * @return Número de partidas registradas.
      */
     public int cantidadPartidas() {
         return historial.size();
