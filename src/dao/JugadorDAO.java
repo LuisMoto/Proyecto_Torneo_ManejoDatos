@@ -7,11 +7,22 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase de acceso a datos (DAO) para la entidad Jugador.
+ *
+ * Permite realizar operaciones y consultas relacionadas
+ * con los jugadores almacenados en la base de datos,
+ * incluyendo búsqueda, actualización de puntajes y ranking.
+ */
 public class JugadorDAO {
 
 
+
 /**
- * Inserta un nuevo jugador.
+ * Registra un nuevo jugador en la base de datos.
+ *
+ * @param jugador Jugador que será almacenado.
+ * @throws SQLException Si ocurre un error durante la inserción.
  */
 public void insertar(Jugador jugador) throws SQLException {
 
@@ -35,8 +46,13 @@ public void insertar(Jugador jugador) throws SQLException {
     }
 }
 
+
 /**
- * Busca un jugador por ID.
+ * Busca un jugador utilizando su identificador único.
+ *
+ * @param id ID del jugador.
+ * @return Objeto Jugador si existe; null en caso contrario.
+ * @throws SQLException Si ocurre un error en la consulta.
  */
 public Jugador buscarPorId(int id) throws SQLException {
 
@@ -66,8 +82,13 @@ public Jugador buscarPorId(int id) throws SQLException {
     return null;
 }
 
+
 /**
- * Busca jugador por nombre.
+ * Busca un jugador por su nombre.
+ *
+ * @param nombre Nombre del jugador.
+ * @return Objeto Jugador si existe; null en caso contrario.
+ * @throws SQLException Si ocurre un error en la consulta.
  */
 public Jugador buscarPorNombre(String nombre) throws SQLException {
 
@@ -97,8 +118,12 @@ public Jugador buscarPorNombre(String nombre) throws SQLException {
     return null;
 }
 
+
 /**
- * Obtiene todos los jugadores.
+ * Recupera todos los jugadores registrados.
+ *
+ * @return Lista con todos los jugadores almacenados.
+ * @throws SQLException Si ocurre un error en la consulta.
  */
 public List<Jugador> obtenerTodos() throws SQLException {
 
@@ -130,7 +155,11 @@ public List<Jugador> obtenerTodos() throws SQLException {
 }
 
 /**
- * Actualiza el puntaje acumulado.
+ * Actualiza el puntaje acumulado de un jugador.
+ *
+ * @param idJugador ID del jugador.
+ * @param nuevoPuntaje Nuevo puntaje a asignar.
+ * @throws SQLException Si ocurre un error durante la actualización.
  */
 public void actualizarPuntaje(int idJugador,
                               double nuevoPuntaje) throws SQLException {
@@ -151,8 +180,12 @@ public void actualizarPuntaje(int idJugador,
     }
 }
 
+
 /**
- * Obtiene ranking desde la vista.
+ * Obtiene el ranking general utilizando la vista Vista_Ranking.
+ *
+ * @return Lista de jugadores ordenada por puntaje acumulado.
+ * @throws SQLException Si ocurre un error en la consulta.
  */
 public List<Jugador> obtenerRanking() throws SQLException {
 
@@ -184,8 +217,13 @@ public List<Jugador> obtenerRanking() throws SQLException {
     return ranking;
 }
 
+
 /**
- * Suma puntos al puntaje acumulado del jugador.
+ * Incrementa el puntaje acumulado de un jugador.
+ *
+ * @param idJugador ID del jugador.
+ * @param puntos Cantidad de puntos a sumar.
+ * @throws SQLException Si ocurre un error durante la actualización.
  */
 public void sumarPuntaje(
         int idJugador,
@@ -195,7 +233,7 @@ public void sumarPuntaje(
     String sql = """
         UPDATE Jugador
         SET puntaje_acumulado =
-            puntaje_acumulado + ?
+        puntaje_acumulado + ?
         WHERE id_jugador = ?
         """;
 
